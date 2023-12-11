@@ -1,8 +1,10 @@
 {
+  "name": "klectik-turbo",
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "config/*"
   ],
   "scripts": {
     "dev": "turbo run dev",
@@ -17,5 +19,6 @@
   "packageManager": "yarn@1.22.19",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "dependencies": {}
 }

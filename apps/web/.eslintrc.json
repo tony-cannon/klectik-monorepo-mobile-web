@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "root": true,
+  "extends": "@klectik/eslint-config/native",
+  "ignorePatterns": ["node_modules", "build", ".expo", ".expo-shared"],
+  "overrides": [
+    {
+      "files": ["*.js"],
+      "env": {
+        "node": true
+      }
+    }
+  ]
 }

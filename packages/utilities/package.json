@@ -1,0 +1,9 @@
+{
+  "name": "@klectik/utils",
+  "version": "1.0.0",
+  "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@reduxjs/toolkit": "^2.0.1",
+    "react-redux": "^9.0.4"
+  }
+}
