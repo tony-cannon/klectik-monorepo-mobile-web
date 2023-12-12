@@ -1,11 +1,25 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import { persistReducer, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist'
+import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
 import React from 'react';
 import { Provider } from 'react-redux';
 
+const persistConfig = {
+  key: 'root',
+  storage,
+  blacklist: []
+}
+
+export const rootReducers = combineReducers({
+  // Add reducers here
+})
+
+const persistedReducer = persistReducer(persistConfig, rootReducers);
+
 const createStore = () => {
   const reduxStore = configureStore({
-    reducer: combineReducers({}),
+    reducer: persistedReducer,
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: false,
@@ -24,12 +38,3 @@ interface ReduxProviderProps {
 export const ReduxProvider: React.FC<ReduxProviderProps> = ({ children }) => {
   return <Provider store={createStore()}>{children}</Provider>;
 };
-
-// A provider meant for sharing across all surfaces.
-// Props should be defined as needed and clarified in name to improve readability
-// export function ReduxProvider({
-//   reduxStore,
-//   children,
-// }: SharedProviderProps): JSX.Element {
-//   return <Provider store={reduxStore}>{children}</Provider>;
-// }

@@ -30,3 +30,8 @@ This Turborepo has some additional tools already setup for you:
 - [Expo](https://docs.expo.dev/) for native development
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [Prettier](https://prettier.io) for code formatting
+
+
+### Sources...
+
+[Expo with Tamagui in a Turbo Build](https://github.com/chen-rn/CUA/tree/main)

@@ -1,7 +1,7 @@
 // Tamagui syntax for defining sub-themes
 
-import { colorsDark, colorsLight } from '@theme/color/colors';
-import { opacify } from '@theme/color/utils';
+import { colorsDark, colorsLight } from './color/colors';
+import { opacify } from './color/utils';
 
 // this is just a helper for things that want to accept theme names as props
 export type ThemeNames =

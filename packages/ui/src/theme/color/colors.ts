@@ -1,4 +1,4 @@
-import { opacify } from '@theme/color/utils';
+import { opacify } from './utils';
 
 export const colors = {
   white: '#FFFFFF',

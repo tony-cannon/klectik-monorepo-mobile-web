@@ -1,8 +1,9 @@
+import React from 'react';
 import {
   tamaguiConfig,
   TamaguiProvider as OGTamaguiProvider,
   TamaguiProviderProps,
-} from 'ui/src';
+} from '@klectik/ui/src';
 // import { useIsDarkMode } from 'wallet/src/features/appearance/hooks';
 
 // without <NavigationProvider>

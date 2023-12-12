@@ -1,12 +1,12 @@
 import { ColorTokens, createTokens } from 'tamagui';
-import { borderRadii } from '@theme/borderRadii';
-import { colors as color } from '@theme/color/colors';
-import { fonts } from '@theme/fonts';
-import { iconSizes } from '@theme/iconSizes';
-import { imageSizes } from '@theme/imageSizes';
-import { spacing } from '@theme/spacing';
-import { themes } from '@theme/themes';
-import { zIndices } from '@theme/zIndices';
+import { borderRadii } from './borderRadii';
+import { colors as color } from './color/colors';
+import { fonts } from './fonts';
+import { iconSizes } from './iconSizes';
+import { imageSizes } from './imageSizes';
+import { spacing } from './spacing';
+import { themes } from './themes';
+import { zIndices } from './zIndices';
 
 const space = { ...spacing, true: spacing.spacing8 };
 
