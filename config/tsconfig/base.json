@@ -19,7 +19,9 @@
     "rootDir": "../../",
     "paths": {
       "@theme/*": ["packages/ui/src/theme/*"],
-      "@utilities/*": ["packages/utilities/src/*"]
+      "@utilities/*": ["packages/utilities/src/*"],
+      "@native/*": ["apps/mobile/*"],
+      "@web/*": ["apps/web/*"]
     }
   },
   "exclude": ["node_modules"]

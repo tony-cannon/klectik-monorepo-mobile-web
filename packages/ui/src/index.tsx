@@ -18,6 +18,7 @@ export {
   useTheme,
   useThemeName,
   YGroup,
+  YStack,
 } from 'tamagui';
 export type {
   Adapt,
@@ -37,6 +38,7 @@ export type {
   Tokens,
 } from 'tamagui';
 export { LinearGradient } from 'tamagui/linear-gradient';
+export * from '@klectik/ui/src/components/layouts/AppYStack';
 //   export {
 //     AnimatedBottomSheetFlashList,
 //     AnimatedFlashList,

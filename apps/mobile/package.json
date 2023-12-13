@@ -3,6 +3,7 @@
   "main": "index.js",
   "version": "1.0.0",
   "scripts": {
+    "dev": "expo start --reset-cache",
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^13.0.0",
+    "@gorhom/bottom-sheet": "^4.5.1",
     "@klectik/ui": "*",
     "@react-navigation/native": "^6.0.2",
     "@tamagui/babel-plugin": "^1.79.10",
