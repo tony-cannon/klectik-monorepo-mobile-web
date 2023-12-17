@@ -1,62 +1,100 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import ButtonIcon from "@native/components/button/ButtonIcon";
+import { Tabs } from "expo-router";
+import {
+  HeartHalf,
+  House,
+  MagnifyingGlass,
+  PlusCircle,
+  UserSquare,
+} from "phosphor-react-native";
+import { Platform, View } from "react-native";
 
-import Colors from '../../constants/Colors';
-
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
+const BottomTabNavigation = () => {
+  //const [redirect, setRedirect] = useState<string | boolean>(false);
 
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
+    <>
+      <Tabs
+        screenOptions={{
+          tabBarHideOnKeyboard: true,
+          tabBarShowLabel: false,
         }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="home"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
-    </Tabs>
+      >
+        <Tabs.Screen
+          name="home"
+          options={{
+            tabBarLabel: "Home",
+            tabBarIcon: ({ size, color }) => <ButtonIcon icon={House} />,
+          }}
+        />
+        <Tabs.Screen
+          name="search"
+          options={{
+            tabBarLabel: "Search",
+            tabBarIcon: ({ size, color }) => (
+              <ButtonIcon icon={MagnifyingGlass} />
+            ),
+          }}
+        />
+
+        <Tabs.Screen
+          name="create"
+          options={{
+            tabBarIcon: ({ size, color }) => {
+              return (
+                <View
+                  style={{
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "red",
+                    width: Platform.OS === "ios" ? 50 : 60,
+                    height: Platform.OS === "ios" ? 50 : 60,
+                    top: Platform.OS === "ios" ? -10 : -20,
+                    borderRadius: Platform.OS === "ios" ? 25 : 30,
+                  }}
+                >
+                  <ButtonIcon icon={PlusCircle} />
+                </View>
+              );
+            },
+          }}
+          // listeners={({ navigation }) => ({
+          //   tabPress: (e) => {
+          //     if (user === null) {
+          //       setRedirect('(tabs)/create');
+          //       setOpenAuthBottomSheet(true);
+          //       e.preventDefault();
+          //     }
+          //   },
+          // })}
+        />
+
+        <Tabs.Screen
+          name="add"
+          options={{
+            tabBarLabel: "Add",
+            tabBarIcon: ({ size, color }) => <ButtonIcon icon={HeartHalf} />,
+          }}
+        />
+        <Tabs.Screen
+          name="profile"
+          options={{
+            tabBarShowLabel: false,
+            tabBarIcon: ({ size, color }) => <ButtonIcon icon={UserSquare} />,
+          }}
+          // listeners={({ navigation }) => ({
+          //   tabPress: (e) => {
+          //     if (user === null) {
+          //       setRedirect('(tabs)/profile');
+          //       setOpenAuthBottomSheet(true);
+          //       e.preventDefault();
+          //     }
+          //   },
+          // })}
+        />
+      </Tabs>
+    </>
   );
-}
+};
+
+export default BottomTabNavigation;

@@ -1,5 +1,5 @@
 {
-  "extends": "@klectik/typescript/react-native-library.json",
+  "extends": "@klectik/typescript/ui.json",
   "include": ["."],
   "exclude": ["dist", "build", "node_modules"],
   "compilerOptions": {

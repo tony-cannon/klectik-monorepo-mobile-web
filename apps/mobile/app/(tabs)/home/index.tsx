@@ -1,21 +1,11 @@
-import { View, Text } from 'react-native';
-import React from 'react';
-import LogoNotificationHeader from '@native/components/headers/LogoNotificationHeader';
-import { AppYStack } from '@klectik/ui/src';
-import { Stack } from 'expo-router';
+import { Text } from "@klectik/ui/src/components/text";
+import Screen from "@native/components/Screen";
 
 const Page = () => {
   return (
-    <AppYStack>
-      <Stack.Screen
-        options={{
-          header: () => <LogoNotificationHeader />,
-        }}
-      />
-      <View style={{ flex: 1, backgroundColor: '#000' }}>
-        <Text style={{ color: '#000' }}>The Home Page...</Text>
-      </View>
-    </AppYStack>
+    <Screen showLogoNotification={true}>
+      <Text color="$pink200">Hello World</Text>
+    </Screen>
   );
 };
 

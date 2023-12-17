@@ -1,29 +1,26 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Providers from '@utilities/Providers';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet'
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
-import { useEffect } from 'react';
-import { useColorScheme } from 'react-native';
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+import Providers from "@utilities/Providers";
+import { useFonts } from "expo-font";
+import { SplashScreen, Stack } from "expo-router";
+import { useEffect } from "react";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
-} from 'expo-router';
+} from "expo-router";
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: '(tabs)',
+  initialRouteName: "(tabs)",
 };
 
 const App = () => {
   const [loaded, error] = useFonts({
-    LogoScript: require('@klectik/ui/src/assets/fonts/Gojacky.ttf'),
+    InterRegular: require("@klectik/ui/src/assets/fonts/Inter-Regular.ttf"),
+    GoJacky: require("@klectik/ui/src/assets/fonts/Gojacky.ttf"),
+    baselBook: require("@klectik/ui/src/assets/fonts/Basel-Book.ttf"),
+    baselMedium: require("@klectik/ui/src/assets/fonts/Basel-Medium.ttf"),
+    monoRegular: require("@klectik/ui/src/assets/fonts/InputMono-Regular.ttf"),
   });
 
   useEffect(() => {
@@ -48,11 +45,10 @@ const InnerApp = () => {
     <Providers>
       <BottomSheetModalProvider>
         <Stack>
-          <Stack.Screen name='(tabs)' options={{ headerShown: false }} />
-          <Stack.Screen name='modal' options={{ presentation: 'modal' }} />
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
         </Stack>
       </BottomSheetModalProvider>
-      
     </Providers>
   );
 };

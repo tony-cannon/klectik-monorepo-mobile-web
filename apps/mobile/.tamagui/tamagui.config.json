@@ -21292,34 +21292,34 @@
   "tamaguiConfig": {
     "fonts": {
       "heading": {
-        "family": "Basel-Book",
+        "family": "baselBook",
         "face": {
           "100": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "200": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "300": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "400": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "500": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "600": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "700": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "800": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "900": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           }
         },
         "size": {
@@ -21342,34 +21342,34 @@
         }
       },
       "subHeading": {
-        "family": "Basel-Book",
+        "family": "baselBook",
         "face": {
           "100": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "200": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "300": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "400": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "500": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "600": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "700": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "800": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "900": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           }
         },
         "size": {
@@ -21390,34 +21390,34 @@
         }
       },
       "body": {
-        "family": "Basel-Book",
+        "family": "baselBook",
         "face": {
           "100": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "200": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "300": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "400": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "500": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "600": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "700": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "800": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           },
           "900": {
-            "normal": "Basel-Book"
+            "normal": "baselBook"
           }
         },
         "size": {
@@ -21443,7 +21443,7 @@
         }
       },
       "button": {
-        "family": "Basel-Medium",
+        "family": "baselMedium",
         "size": {
           "micro": 12,
           "small": 16,
@@ -21464,6 +21464,27 @@
           "medium": 24,
           "large": 24,
           "true": 24
+        }
+      },
+      "logo": {
+        "family": "GoJacky",
+        "size": {
+          "small": 24,
+          "medium": 36,
+          "true": 36,
+          "large": 52
+        },
+        "weight": {
+          "small": "500",
+          "medium": "500",
+          "true": "500",
+          "large": "500"
+        },
+        "lineHeight": {
+          "small": 32,
+          "medium": 44,
+          "true": 44,
+          "large": 60
         }
       }
     },

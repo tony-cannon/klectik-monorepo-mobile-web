@@ -1,8 +1,8 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 export const loginSchema = yup.object().shape({
-  username: yup.string().required('Username is required'),
-  password: yup.string().required('Password is required'),
+  username: yup.string().required("Username is required"),
+  password: yup.string().required("Password is required"),
   //   firstName: yup.string().required('First Name is required'),
   //   lastName: yup.string().required('Last Name is required'),
   //   email: yup.string().email('Invalid email').required('Email is required'),
@@ -23,8 +23,8 @@ export const loginSchema = yup.object().shape({
 });
 
 export const loginDefaultValues = {
-  username: '',
-  password: '',
+  username: "",
+  password: "",
   //   firstName: '',
   //   lastName: '',
   //   email: '',

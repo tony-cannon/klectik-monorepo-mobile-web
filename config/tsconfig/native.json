@@ -4,11 +4,10 @@
   "extends": "./base.json",
   "compilerOptions": {
     "allowJs": true,
-    "declaration": false,
     "declarationMap": false,
     "incremental": true,
-    "jsx": "preserve",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "jsx": "react-jsx",
+    "lib": ["dom", "dom.iterable", "esnext", "ES2023"],
     "module": "esnext",
     "noEmit": true,
     "resolveJsonModule": true,

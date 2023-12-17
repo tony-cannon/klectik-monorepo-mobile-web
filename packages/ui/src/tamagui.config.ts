@@ -1,16 +1,18 @@
-import { createMedia } from '@tamagui/react-native-media-driver';
-import { shorthands as tamaguiShorthands } from '@tamagui/shorthands';
-import { createTamagui } from 'tamagui';
-import { breakpoints, heightBreakpoints } from './theme/breakpoints';
-import { animations } from './theme/animations';
+import { createMedia } from "@tamagui/react-native-media-driver";
+import { shorthands as tamaguiShorthands } from "@tamagui/shorthands";
+import { createTamagui } from "tamagui";
+
+import { animations } from "./theme/animations";
+import { breakpoints, heightBreakpoints } from "./theme/breakpoints";
 import {
   bodyFont,
   buttonFont,
   headingFont,
   subHeadingFont,
-} from './theme/fonts';
-import { themes } from './theme/themes';
-import { tokens } from './theme/tokens';
+  logoFont
+} from "./theme/fonts";
+import { themes } from "./theme/themes";
+import { tokens } from "./theme/tokens";
 
 const {
   // tamagui has this terribly awkward bc that is the same as bg :/, removing it for our purposes
@@ -30,6 +32,7 @@ export const config = createTamagui({
     subHeading: subHeadingFont,
     body: bodyFont,
     button: buttonFont,
+    logo: logoFont,
   },
   themes,
   tokens,
@@ -45,8 +48,8 @@ export const config = createTamagui({
     short: { maxHeight: heightBreakpoints.short },
   }),
   settings: {
-    allowedStyleValues: 'somewhat-strict-web',
-    autocompleteSpecificTokens: 'except-special',
+    allowedStyleValues: "somewhat-strict-web",
+    autocompleteSpecificTokens: "except-special",
     fastSchemeChange: true,
   },
 });

@@ -19,7 +19,7 @@ export {
   useThemeName,
   YGroup,
   YStack,
-} from 'tamagui';
+} from "tamagui";
 export type {
   Adapt,
   CircleProps,
@@ -36,9 +36,8 @@ export type {
   TamaguiProviderProps,
   ThemeKeys,
   Tokens,
-} from 'tamagui';
-export { LinearGradient } from 'tamagui/linear-gradient';
-export * from '@klectik/ui/src/components/layouts/AppYStack';
+} from "tamagui";
+export { LinearGradient } from "tamagui/linear-gradient";
 //   export {
 //     AnimatedBottomSheetFlashList,
 //     AnimatedFlashList,
@@ -48,14 +47,7 @@ export * from '@klectik/ui/src/components/layouts/AppYStack';
 //   export type { GeneratedIcon, IconProps } from './components/factories/createIcon'
 //   export * as Icons from './components/icons/allIcons'
 //   export * from './components/input/utils'
-//   export {
-//     AnimatedFlex,
-//     Flex,
-//     flexStyles,
-//     Inset,
-//     Separator,
-//     type FlexProps,
-//   } from './components/layout'
+
 //   export * as Logos from './components/logos'
 //   export * from './components/text'
 //   export * from './components/touchable'
@@ -70,5 +62,5 @@ export * from '@klectik/ui/src/components/layouts/AppYStack';
 //   export * from './loading/Shine'
 //   export * from './loading/Skeleton'
 //   export * from './loading/TransactionLoader'
-export { config as tamaguiConfig } from './tamagui.config';
-export * from './theme/shadows';
+export { config as tamaguiConfig } from "./tamagui.config";
+export * from "./theme/shadows";
