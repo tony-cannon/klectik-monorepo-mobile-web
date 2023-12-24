@@ -37,20 +37,21 @@ export type {
     ThemeKeys,
     Tokens,
 } from 'tamagui';
+export { Flex, type FlexProps } from './components/layout';
 export { LinearGradient } from 'tamagui/linear-gradient';
 //   export {
 //     AnimatedBottomSheetFlashList,
 //     AnimatedFlashList,
 //   } from './components/AnimatedFlashList/AnimatedFlashList'
-export { Button } from './components/common/buttons';
+export { Button } from './components/common/button/Button';
 //   export { withAnimated } from './components/factories/animated'
 //   export type { GeneratedIcon, IconProps } from './components/factories/createIcon'
-//   export * as Icons from './components/icons/allIcons'
+export * as Icons from './components/icons';
 //   export * from './components/input/utils'
 
 //   export * as Logos from './components/logos'
-//   export * from './components/text'
-//   export * from './components/touchable'
+export * from './components/text';
+export * from './components/touchable';
 //   export * from './components/Unicon'
 //   export * from './components/Unicon/utils'
 //   export { useDeviceDimensions } from './hooks/useDeviceDimensions'

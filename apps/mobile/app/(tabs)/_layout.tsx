@@ -11,7 +11,7 @@ import {
 } from 'phosphor-react-native';
 import { Platform, View } from 'react-native';
 import LoginModal from '@native/components/modal/LoginModal';
-
+import { Text } from '@klectik/ui/src/components/text/Text';
 import { colors } from '@theme/color/colors';
 
 const BottomTabNavigation = () => {
@@ -124,7 +124,7 @@ const BottomTabNavigation = () => {
                     // })}
                 />
             </Tabs>
-            <LoginModal ref={loginModalRef} redirect />
+            <LoginModal ref={loginModalRef} redirect={redirect} />
         </>
     );
 };

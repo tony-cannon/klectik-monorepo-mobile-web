@@ -148,9 +148,17 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
                             </Text>
                         )}
 
-                        <Button onPress={() => handleSubmit()}>Login</Button>
+                        <Button
+                            theme="detrimental"
+                            onPress={() => handleSubmit()}
+                            hapticFeedback={true}
+                        >
+                            Login
+                        </Button>
 
-                        <Button style={{ marginTop: 20 }}>Register</Button>
+                        <Button style={{ marginTop: 20 }} hapticFeedback={true}>
+                            Register
+                        </Button>
                     </Flex>
                 )}
             </Formik>

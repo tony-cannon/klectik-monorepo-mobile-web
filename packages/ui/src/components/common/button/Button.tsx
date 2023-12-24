@@ -1,5 +1,6 @@
+import { hapticFeedback } from '@klectik/ui/src/components/haptics/hapticFeedback';
 import { ImpactFeedbackStyle } from 'expo-haptics';
-import { createContext, FunctionComponent, useContext } from 'react';
+import React, { createContext, FunctionComponent, useContext } from 'react';
 import {
     ButtonText,
     GetProps,
@@ -15,8 +16,7 @@ import {
     wrapChildrenInText,
     XStack,
 } from 'tamagui';
-import { IconProps } from 'ui/src/components/factories/createIcon';
-import { hapticFeedback } from 'ui/src/components/haptics/hapticFeedback';
+import { IconProps } from '../../factories/createIcon';
 
 type ButtonSize = 'small' | 'medium' | 'large';
 

@@ -10,14 +10,14 @@ export const NotificationsIcons = () => {
                 <PhosphorTouchableIcon
                     icon={BellRinging}
                     color={'#fff'}
-                    IconWeight="bold"
+                    IconWeight="thin"
                 />
             </Link>
             <Link href={'/(aux)/messages'} style={{ marginLeft: 10 }}>
                 <PhosphorTouchableIcon
                     icon={ChatCircleText}
                     color={'#fff'}
-                    IconWeight="bold"
+                    IconWeight="thin"
                 />
             </Link>
         </Flex>
