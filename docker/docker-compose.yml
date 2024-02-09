@@ -1,0 +1,94 @@
+version: '3.4'
+
+services:
+    strapi:
+        container_name: strapi
+        platform: linux/amd64
+        image: elestio/strapi-production:latest
+        restart: always
+        env_file: .env
+        environment:
+            - DATABASE_CLIENT=${DATABASE_CLIENT}
+            - DATABASE_HOST=${DATABASE_HOST}
+            - DATABASE_PORT=${DATABASE_PORT}
+            - DATABASE_NAME=${DATABASE_NAME}
+            - DATABASE_USERNAME=${DATABASE_USERNAME}
+            - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+            - NODE_ENV=${NODE_ENV}
+        ports:
+            - 1337:1337
+        volumes:
+            - ./strapi:/opt/app
+        depends_on:
+            - db
+    db:
+        image: postgres
+        restart: always
+        environment:
+            POSTGRES_DB: ${DATABASE_NAME}
+            POSTGRES_USER: ${DATABASE_USERNAME}
+            POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+        volumes:
+            - ./data/db:/var/lib/postgresql/data
+        ports:
+            - '5432:5432'
+    pgadmin:
+        depends_on:
+            - db
+        image: dpage/pgadmin4:8.2
+        container_name: pgadmin4
+        restart: always
+        volumes:
+            - ./data/pgadmin:/var/lib/pgadmin
+        environment:
+            - PGADMIN_DEFAULT_EMAIL=${ADMIN_EMAIL}
+            - PGADMIN_DEFAULT_PASSWORD=${ADMIN_PASSWORD}
+        ports:
+            - 5050:80
+        networks:
+            postgresql-network:
+                ipv4_address: 192.168.0.3
+    mongodb:
+        container_name: mongodb
+        image: mongo:7.0.5
+        restart: always
+        environment:
+            - MONGO_INITDB_ROOT_USERNAME=admin
+            - MONGO_INITDB_DATABASE=NodeExpressProject
+            - MONGO_INITDB_ROOT_PASSWORD=pass
+        networks:
+            - mongo-compose-network
+        ports:
+            - '27018:27017'
+        volumes:
+            - ./data/mongo:/data/db
+
+    mongo-express:
+        container_name: mongo-express
+        image: mongo-express:latest
+        restart: always
+        depends_on:
+            - mongodb
+        networks:
+            - mongo-compose-network
+        environment:
+            - ME_CONFIG_MONGODB_SERVER=mongodb
+            - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+            - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
+            - ME_CONFIG_BASICAUTH_USERNAME=admin
+            - ME_CONFIG_BASICAUTH_PASSWORD=pass
+            - ME_CONFIG_MONGODB_ENABLE_ADMIN=true
+        ports:
+            - '8081:8081'
+        volumes:
+            - ./data/express:/data/db
+
+networks:
+    mongo-compose-network:
+        driver: bridge
+    postgresql-network:
+        ipam:
+            driver: default
+            config:
+                - subnet: '192.168.0.0/24'
+                  gateway: 192.168.0.1

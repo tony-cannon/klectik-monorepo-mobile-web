@@ -4,6 +4,8 @@
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.21.0",
     "@reduxjs/toolkit": "^2.0.1",
+    "@supabase/supabase-js": "^2.39.3",
+    "react-native-url-polyfill": "^2.0.0",
     "react-redux": "^9.0.4",
     "redux-persist": "^6.0.0"
   }

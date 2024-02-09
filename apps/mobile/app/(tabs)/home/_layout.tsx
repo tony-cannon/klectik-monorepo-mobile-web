@@ -1,6 +1,5 @@
+import { Logo, NotificationsIcons } from '@native/components/sections/header';
 import { Stack } from 'expo-router';
-import { Logo } from '@native/components/sections/header';
-import { NotificationsIcons } from '@native/components/sections/header/NotificationsIcons';
 
 export default function Layout() {
     return (

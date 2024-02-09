@@ -1,43 +1,44 @@
 {
-  "name": "klectik-turbo",
-  "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "config/*"
-  ],
-  "eslintConfig": {
-    "extends": "universe/native"
-  },
-  "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
-    "clean": "turbo run clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
-  },
-  "devDependencies": {
-    "eslint": "^8.55.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-config-universe": "^12.0.0",
-    "eslint-plugin-no-relative-import-paths": "^1.5.3",
-    "eslint-plugin-prettier": "^5.0.1",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "prettier": "^3.1.1",
-    "prettier-plugin-organize-imports": "^3.2.4",
-    "turbo": "latest"
-  },
-  "packageManager": "yarn@1.22.19",
-  "engines": {
-    "node": ">=18"
-  },
-  "dependencies": {
-    "@apollo/client": "^3.8.8",
-    "@tamagui/helpers-icon": "^1.79.12",
-    "add": "^2.0.6",
-    "formik": "^2.4.5",
-    "phosphor-react-native": "^2.0.0",
-    "yarn": "^1.22.21",
-    "yup": "^1.3.2"
-  }
+    "name": "klectik-turbo",
+    "private": true,
+    "workspaces": [
+        "apps/*",
+        "packages/*",
+        "config/*"
+    ],
+    "eslintConfig": {
+        "extends": "universe/native"
+    },
+    "scripts": {
+        "dev": "dotenv -- turbo run dev",
+        "build": "turbo run build",
+        "clean": "turbo run clean && rm -rf node_modules",
+        "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
+    },
+    "devDependencies": {
+        "eslint": "^8.55.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-config-universe": "^12.0.0",
+        "eslint-plugin-no-relative-import-paths": "^1.5.3",
+        "eslint-plugin-prettier": "^5.0.1",
+        "eslint-plugin-react": "^7.33.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "prettier": "^3.1.1",
+        "prettier-plugin-organize-imports": "^3.2.4",
+        "turbo": "latest"
+    },
+    "packageManager": "yarn@1.22.19",
+    "engines": {
+        "node": ">=18"
+    },
+    "dependencies": {
+        "@apollo/client": "^3.8.8",
+        "@tamagui/helpers-icon": "^1.79.12",
+        "add": "^2.0.6",
+        "dotenv-cli": "^7.3.0",
+        "formik": "^2.4.5",
+        "phosphor-react-native": "^2.0.0",
+        "yarn": "^1.22.21",
+        "yup": "^1.3.2"
+    }
 }

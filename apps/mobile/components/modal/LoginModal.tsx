@@ -1,4 +1,4 @@
-import { useEffect, forwardRef, useState, ReactNode } from 'react';
+import { ReactNode, forwardRef, useEffect, useState } from 'react';
 import { Modal, ModalRef } from '../layout/BottomSheetModal';
 
 import useForwardedRef from '@klectik/utils/src/hooks/useForwardedRef';
@@ -23,8 +23,8 @@ const LoginModal = forwardRef<ModalRef, Props>((props, ref) => {
         <Modal
             ref={modalRef}
             snapPoints={['50%']}
-            title="Login"
-            description="Enter credentials to login..."
+            title=""
+            description=""
             onDismiss={() => {
                 setModalClosed(true);
             }}

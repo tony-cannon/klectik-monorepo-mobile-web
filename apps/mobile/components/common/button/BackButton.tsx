@@ -1,11 +1,10 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { BackButtonView } from '@native/components/layout/BackButtonView';
 import {
-    ColorTokens,
-    TouchableArea,
-    TouchableAreaProps,
+	ColorTokens,
+	TouchableArea,
+	TouchableAreaProps,
 } from '@klectik/ui/src';
+import { BackButtonView } from '@native/components/layout/BackButtonView';
+import { useNavigation } from '@react-navigation/native';
 
 type Props = {
     size?: number;

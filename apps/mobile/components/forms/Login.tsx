@@ -1,20 +1,20 @@
-import { StyleSheet } from 'react-native';
+import { Button, Input } from '@klectik/ui/src';
 import { Flex } from '@klectik/ui/src/components/layout/Flex';
 import { Text } from '@klectik/ui/src/components/text/Text';
-import { Input, Button } from '@klectik/ui/src';
-import { forwardRef, useState, useEffect } from 'react';
-import { ModalRef } from '../layout/BottomSheetModal';
 import useForwardedRef from '@klectik/utils/src/hooks/useForwardedRef';
+import { forwardRef, useEffect, useState } from 'react';
+import { StyleSheet } from 'react-native';
+import { ModalRef } from '../layout/BottomSheetModal';
 // import React, { useEffect, useState } from 'react';
-import { useRouter } from 'expo-router';
 import { useMutation } from '@apollo/client';
-import * as mutations from '@utilities/schemas/graphql/mutations';
-import { Formik, useFormikContext } from 'formik';
+import { useAuth } from '@utilities/contexts/AuthContext';
 import {
     loginDefaultValues,
     loginSchema,
 } from '@utilities/schemas/forms/login';
-import { useAuth } from '@utilities/contexts/AuthContext';
+import * as mutations from '@utilities/schemas/graphql/mutations';
+import { useRouter } from 'expo-router';
+import { Formik, useFormikContext } from 'formik';
 //import { Button } from '@theme';
 
 interface LoginProps {
@@ -118,13 +118,11 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
                             borderColor={
                                 errors?.username || formErrorMessage
                                     ? 'red'
-                                    : 'transparent'
+                                    : 'black'
                             }
                         />
 
-                        <Text style={(styles.label, styles.input)}>
-                            Password
-                        </Text>
+                        <Text style={styles.label}>Password</Text>
                         <Input
                             style={styles.input}
                             onChangeText={handleChange('password')}
@@ -136,7 +134,7 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
                             borderColor={
                                 errors?.password || formErrorMessage
                                     ? 'red'
-                                    : 'transparent'
+                                    : 'black'
                             }
                         />
                         {errors?.username && <Text>{errors.username}</Text>}
@@ -172,10 +170,12 @@ export default Login;
 
 const styles = StyleSheet.create({
     label: {
-        fontSize: 18,
+        fontSize: 16,
         marginBottom: 8,
     },
     input: {
         marginBottom: 5,
+        borderRadius: 8,
+        height: 30,
     },
 });
