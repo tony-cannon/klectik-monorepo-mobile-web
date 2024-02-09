@@ -1,6 +1,5 @@
-import { useRef, useState } from 'react';
-import { ModalRef } from '@native/components/layout/BottomSheetModal';
 import PhosphorTouchableIcon from '@native/components/common/button/PhosphorTouchableIcon';
+import { ModalRef } from '@native/components/layout/BottomSheetModal';
 import { Tabs } from 'expo-router';
 import {
     HeartHalf,
@@ -9,12 +8,16 @@ import {
     PlusCircle,
     UserSquare,
 } from 'phosphor-react-native';
+import { useRef, useState } from 'react';
 import { Platform, View } from 'react-native';
-import LoginModal from '@native/components/modal/LoginModal';
-import { Text } from '@klectik/ui/src/components/text/Text';
+//import { Text } from '@klectik/ui/src/components/text/Text';
+import SignInModal from '@native/components/modal/SignInModal';
 import { colors } from '@theme/color/colors';
+import { useAuth } from '@utilities/contexts/AuthContext';
 
 const BottomTabNavigation = () => {
+    const { user } = useAuth();
+    console.log('User is... ', user);
     const loginModalRef = useRef<ModalRef>(null);
     const [redirect, setRedirect] = useState<string | boolean>(false);
     return (
@@ -78,14 +81,14 @@ const BottomTabNavigation = () => {
                     }}
                     listeners={() => ({
                         tabPress: (e) => {
-                            // if (user === null) {
-                            //     setRedirect('(tabs)/create');
-                            //     setOpenAuthBottomSheet(true);
-                            //     e.preventDefault();
-                            // }
-                            e.preventDefault();
-                            setRedirect('(tabs)/home');
-                            loginModalRef.current?.present();
+                            if (!user) {
+                                e.preventDefault();
+                                setRedirect('(tabs)/home');
+                                loginModalRef.current?.present();
+                            }
+                            // e.preventDefault();
+                            // setRedirect('(tabs)/home');
+                            // loginModalRef.current?.present();
                         },
                     })}
                 />
@@ -124,7 +127,7 @@ const BottomTabNavigation = () => {
                     // })}
                 />
             </Tabs>
-            <LoginModal ref={loginModalRef} redirect={redirect} />
+            <SignInModal ref={loginModalRef} redirect={redirect} />
         </>
     );
 };

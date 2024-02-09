@@ -2,7 +2,7 @@ import { Button, Input } from '@klectik/ui/src';
 import { Flex } from '@klectik/ui/src/components/layout/Flex';
 import { Text } from '@klectik/ui/src/components/text/Text';
 import useForwardedRef from '@klectik/utils/src/hooks/useForwardedRef';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect, useRef, useState } from 'react';
 import { StyleSheet } from 'react-native';
 import { ModalRef } from '../layout/BottomSheetModal';
 // import React, { useEffect, useState } from 'react';
@@ -22,11 +22,15 @@ interface LoginProps {
     modalClosed: boolean;
 }
 
-const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
+const SignIn = forwardRef<ModalRef, LoginProps>((props, ref) => {
     const { redirect, modalClosed } = props;
+
     const loginModalRef = useForwardedRef(ref);
+    const emailRef = useRef();
+    const passwordRef = useRef();
+
     const router = useRouter();
-    const { login } = useAuth();
+    const { signIn } = useAuth();
     //const {} = useModal();
     //const { openAuthBottomSheet, setOpenAuthBottomSheet } = useModal();
     const [loginUser] = useMutation(mutations.LOGIN_USER);
@@ -50,6 +54,24 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
         return null;
     };
 
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        // Get email and password input values
+        const email = emailRef.current;
+        const password = passwordRef.current;
+
+        // Calls `signIn` function from the context
+        const { error } = await signIn({ email, password });
+
+        if (error) {
+            alert('error signing in');
+        } else {
+            // Redirect user to Dashboard
+            //history.push('/');
+        }
+    }
+
     return (
         <Flex>
             <Formik
@@ -57,46 +79,7 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
                 validationSchema={loginSchema}
                 validateOnChange={false}
                 validateOnBlur={false}
-                onSubmit={async (values) => {
-                    try {
-                        loginUser({
-                            variables: {
-                                input: {
-                                    identifier: values.username,
-                                    password: values.password,
-                                    provider: 'local',
-                                },
-                            },
-                        })
-                            .then((res) => {
-                                login(res.data.login);
-                                if (redirect) {
-                                    router.push(`/${redirect}`);
-                                    loginModalRef.current?.close();
-                                } else {
-                                    loginModalRef.current?.close();
-                                }
-                            })
-                            .catch((err) => {
-                                const errorCode =
-                                    err.graphQLErrors[0].extensions.error.name;
-
-                                if (errorCode === 'ValidationError') {
-                                    console.log(
-                                        'err1 :::: ' +
-                                            err.graphQLErrors[0].extensions
-                                                .error.name
-                                    );
-                                    setFormErrorMessage(
-                                        'Incorrect username or password'
-                                    );
-                                }
-                            })
-                            .finally(() => {});
-                    } catch (error: any) {
-                        console.log('error :::: ' + error);
-                    }
-                }}
+                onSubmit={handleSubmit}
             >
                 {({
                     handleChange,
@@ -120,6 +103,7 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
                                     ? 'red'
                                     : 'black'
                             }
+                            ref={emailRef}
                         />
 
                         <Text style={styles.label}>Password</Text>
@@ -164,9 +148,9 @@ const Login = forwardRef<ModalRef, LoginProps>((props, ref) => {
     );
 });
 
-Login.displayName = 'Login';
+SignIn.displayName = 'Login';
 
-export default Login;
+export default SignIn;
 
 const styles = StyleSheet.create({
     label: {

@@ -9,7 +9,7 @@ interface Props {
     redirect: string | boolean;
 }
 
-const LoginModal = forwardRef<ModalRef, Props>((props, ref) => {
+const SignInModal = forwardRef<ModalRef, Props>((props, ref) => {
     const { redirect } = props;
     const modalRef = useForwardedRef(ref);
 
@@ -39,6 +39,6 @@ const LoginModal = forwardRef<ModalRef, Props>((props, ref) => {
     );
 });
 
-LoginModal.displayName = 'LoginModal';
+SignInModal.displayName = 'LoginModal';
 
-export default LoginModal;
+export default SignInModal;

@@ -1,21 +1,14 @@
 import { ApolloProvider } from '@utilities/contexts/ApolloContext';
 import { AuthProvider } from '@utilities/contexts/AuthContext';
-import { UserProvider } from '@utilities/contexts/UserContext';
-import { TamaguiProvider } from '@utilities/contexts/TamaguiContext';
 import { ModalProvider } from '@utilities/contexts/ModalContext';
+import { TamaguiProvider } from '@utilities/contexts/TamaguiContext';
 
 import { combineProviders } from '@utilities/functions/combineProviders';
 
 const Providers: React.FC<{ children: React.ReactNode }> = ({ children }) =>
-  combineProviders(
-    [
-      ApolloProvider,
-      AuthProvider,
-      UserProvider,
-      TamaguiProvider,
-      ModalProvider,
-    ],
-    children
-  );
+    combineProviders(
+        [ApolloProvider, AuthProvider, TamaguiProvider, ModalProvider],
+        children
+    );
 
 export default Providers;

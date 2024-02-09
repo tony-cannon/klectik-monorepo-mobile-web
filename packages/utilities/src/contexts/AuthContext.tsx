@@ -1,123 +1,71 @@
-import {
-  createUser,
-  setUser,
-  getUser,
-  logout as GQLLogout,
-} from '@utilities/functions/auth';
+import { Session, User } from '@supabase/supabase-js';
+import { supabaseClient } from '@utilities/lib/supabase';
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-const initialState = {
-  isAuthenticated: false,
-  isInitilized: false,
-  user: null,
-};
-
-const handlers: Record<string, (state: any, action: any) => void> = {
-  INITIALIZE: (state, action) => {
-    const { isAuthenticated, user } = action.payload;
-
-    return {
-      ...state,
-      isAuthenticated,
-      isInitialized: true,
-      user,
-    };
-  },
-  LOGIN: (state, action) => {
-    const { user } = action.payload;
-
-    return {
-      ...state,
-      isAuthenticated: true,
-      user,
-    };
-  },
-  LOGOUT: (state) => ({
-    ...state,
-    isAuthenticated: false,
-    user: null,
-  }),
-  REGISTER: (state, action) => {
-    const { user } = action.payload;
-
-    return {
-      ...state,
-      isAuthenticated: true,
-      user,
-    };
-  },
-};
-
-const reducer = (state: any, action: any) => {
-  const handler = handlers[action.type];
-  return handler ? handler(state, action) : state;
-};
-
+// create a context for authentication
 const AuthContext = createContext<{
-  login: (user: any) => void;
-  logout: () => void;
-  register: null;
-  user: any;
+    session: Session | null | undefined;
+    user: User | null | undefined;
+    signIn: () => void;
+    signOut: () => void;
+    signUp: () => void;
 }>({
-  ...initialState,
-  login: () => Promise.resolve(),
-  logout: () => {},
-  register: null,
-  user: null,
+    session: null,
+    user: null,
+    signIn: () => {},
+    signOut: () => {},
+    signUp: () => {},
 });
 
-export const AuthProvider = (props: React.PropsWithChildren<{}>) => {
-  const { children } = props;
-  const [state, dispatch] = React.useReducer(reducer, initialState);
+export const AuthProvider = ({ children }: any) => {
+    const [user, setUser] = useState<User>();
+    const [session, setSession] = useState<Session | null>();
+    const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const initialize = async () => {
-      try {
-        const user = await getUser();
-        dispatch({
-          type: 'INITIALIZE',
-          payload: {
-            isAuthenticated: !!user,
-            user,
-          },
-        });
-      } catch (error) {
-        console.log(error);
-      }
+    useEffect(() => {
+        const setData = async () => {
+            const {
+                data: { session },
+                error,
+            } = await supabaseClient.auth.getSession();
+            if (error) throw error;
+            setSession(session);
+            setUser(session?.user);
+            setLoading(false);
+        };
+
+        const { data: listener } = supabaseClient.auth.onAuthStateChange(
+            (_event, session) => {
+                setSession(session);
+                setUser(session?.user);
+                setLoading(false);
+            }
+        );
+
+        setData();
+
+        return () => {
+            listener?.subscription.unsubscribe();
+        };
+    }, []);
+
+    const value = {
+        session,
+        user,
+        signIn: (data) => supabaseClient.auth.signInWithPassword(data),
+        signOut: () => supabaseClient.auth.signOut(),
+        signUp: (data) => supabaseClient.auth.signUp(data),
     };
 
-    initialize();
-  }, []);
-
-  const login = async (user: any) => {
-    await setUser(user);
-    dispatch({ type: 'LOGIN', payload: { user } });
-  };
-
-  const logout = async () => {
-    await GQLLogout();
-    dispatch({ type: 'LOGOUT' });
-  };
-
-  const register = async (email: string, password: string) => {
-    const user = await createUser(email, password);
-    dispatch({ type: 'REGISTER', payload: { user } });
-  };
-
-  return (
-    <AuthContext.Provider
-      value={{
-        login,
-        logout,
-        register,
-        ...state,
-      }}
-    >
-      {children}
-    </AuthContext.Provider>
-  );
+    // use a provider to pass down the value
+    return (
+        <AuthContext.Provider value={value}>
+            {!loading && children}
+        </AuthContext.Provider>
+    );
 };
 
-export const useAuth = () => useContext(AuthContext);
-
-export default AuthContext;
+// export the useAuth hook
+export const useAuth = () => {
+    return useContext(AuthContext);
+};
